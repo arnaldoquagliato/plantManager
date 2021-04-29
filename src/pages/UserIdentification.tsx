@@ -1,6 +1,6 @@
 import content from '*.png'
 import React, { useState } from 'react'
-import {SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform} from 'react-native'
+import {SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard} from 'react-native'
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 import {Button} from '../components/Button'
@@ -36,7 +36,7 @@ export function UserIdentification(){
         style={styles.container} 
         behavior={Platform.OS === 'ios' ? 'padding' :'height'}
         >
-        
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.content}>
             <View style={styles.form}>
               <View style={styles.header}>
@@ -71,6 +71,8 @@ export function UserIdentification(){
             </View>
 
         </View>
+        </TouchableWithoutFeedback>
+        
       </KeyboardAvoidingView>
     </SafeAreaView>
   )
