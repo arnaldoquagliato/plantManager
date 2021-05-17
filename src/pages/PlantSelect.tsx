@@ -136,7 +136,7 @@ export function PlantSelect(){
         }
         ListFooterComponent={
           loadingMore ?
-          <ActivityIndicator color={colors.green} /> : nulle
+          <ActivityIndicator color={colors.green} /> : null
         }
           />  
       </View>

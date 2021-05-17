@@ -1,10 +1,11 @@
 import content from '*.png'
 import React, { useState } from 'react'
-import {SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard} from 'react-native'
+import {SafeAreaView, StyleSheet, Text, View, TextInput, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, Alert} from 'react-native'
 import colors from '../styles/colors'
 import fonts from '../styles/fonts'
 import {Button} from '../components/Button'
 import { useNavigation } from '@react-navigation/core'
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function UserIdentification(){
   const [isFocused, setIsFocused] = useState(false)
@@ -13,7 +14,11 @@ export function UserIdentification(){
 
   const navigation = useNavigation()
 
-  function handleSubimit(){
+  
+  async function handleSubimit(){
+    if(!name) return Alert.alert(`Me diz como chamar você`)
+
+    await AsyncStorage.setItem("@plantManager:user", name)
     navigation.navigate('Confirmation')
   }
 
