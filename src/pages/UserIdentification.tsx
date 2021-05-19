@@ -18,8 +18,12 @@ export function UserIdentification(){
   async function handleSubimit(){
     if(!name) return Alert.alert(`Me diz como chamar você`)
 
-    await AsyncStorage.setItem("@plantManager:user", name)
-    navigation.navigate('Confirmation')
+    try {
+      await AsyncStorage.setItem("@plantManager:user", name)
+      navigation.navigate('Confirmation')  
+    } catch (error) {
+      Alert.alert(`Não foi possivel salvar o seu nome`)
+    }
   }
 
   const handleOnBlur = () =>{
